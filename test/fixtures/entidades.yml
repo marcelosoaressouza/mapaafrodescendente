@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entidade: MyString
+  slug: MyString
+  email: MyString
+  responsavel: MyString
+  municipio: MyString
+  uf: MyString
+  endereco: MyString
+  telefone: MyString
+  descricao: MyText
+  descritor: MyString
+  telecentro: false
+  gesac: false
+  ponto_cultura: false
+  estudo_cultural: false
+  quilombo: false
+  quilombo_urbano: false
+  capoeira: false
+  terreiro: false
+  nucleo_formacao: false
+  grupo_mestre: false
+  radio: false
+  estudio: false
+  roupa_acessorio: false
+  evento: false
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  entidade: MyString
+  slug: MyString
+  email: MyString
+  responsavel: MyString
+  municipio: MyString
+  uf: MyString
+  endereco: MyString
+  telefone: MyString
+  descricao: MyText
+  descritor: MyString
+  telecentro: false
+  gesac: false
+  ponto_cultura: false
+  estudo_cultural: false
+  quilombo: false
+  quilombo_urbano: false
+  capoeira: false
+  terreiro: false
+  nucleo_formacao: false
+  grupo_mestre: false
+  radio: false
+  estudio: false
+  roupa_acessorio: false
+  evento: false
+  latitude: 1.5
+  longitude: 1.5

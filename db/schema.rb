@@ -11,10 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004153017) do
+ActiveRecord::Schema.define(version: 20141004170207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "entidades", force: true do |t|
+    t.string   "entidade"
+    t.string   "slug"
+    t.string   "email"
+    t.string   "responsavel"
+    t.string   "municipio"
+    t.string   "uf"
+    t.string   "endereco"
+    t.string   "telefone"
+    t.text     "descricao"
+    t.string   "descritor"
+    t.boolean  "telecentro"
+    t.boolean  "gesac"
+    t.boolean  "ponto_cultura"
+    t.boolean  "estudo_cultural"
+    t.boolean  "quilombo"
+    t.boolean  "quilombo_urbano"
+    t.boolean  "capoeira"
+    t.boolean  "terreiro"
+    t.boolean  "nucleo_formacao"
+    t.boolean  "grupo_mestre"
+    t.boolean  "radio"
+    t.boolean  "estudio"
+    t.boolean  "roupa_acessorio"
+    t.boolean  "evento"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "entidades", ["email"], name: "index_entidades_on_email", unique: true, using: :btree
+  add_index "entidades", ["entidade"], name: "index_entidades_on_entidade", unique: true, using: :btree
+  add_index "entidades", ["slug"], name: "index_entidades_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false

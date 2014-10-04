@@ -1,0 +1,235 @@
+<%= form_for @entidade, :html => { :class => "form-horizontal entidade" } do |f| %>
+
+    <% if @entidade.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@entidade.errors.count, "error") %> prohibited this entidade from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @entidade.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :entidade, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :entidade, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:entidade]) %>
+  </div>
+
+<!--
+  <div class="control-group">
+    <%= f.label :slug, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :slug, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:slug]) %>
+  </div>
+-->
+
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:email]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :responsavel, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :responsavel, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:responsavel]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :municipio, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :municipio, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:municipio]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :uf, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :uf, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:uf]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :endereco, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :endereco, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:endereco]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :telefone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :telefone, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:telefone]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :descricao, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :descricao, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:descricao]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :descritor, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :descritor, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:descritor]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :telecentro, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :telecentro, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:telecentro]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :gesac, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :gesac, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:gesac]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :ponto_cultura, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :ponto_cultura, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:ponto_cultura]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :estudo_cultural, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :estudo_cultural, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:estudo_cultural]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :quilombo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :quilombo, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:quilombo]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :quilombo_urbano, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :quilombo_urbano, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:quilombo_urbano]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :capoeira, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :capoeira, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:capoeira]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :terreiro, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :terreiro, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:terreiro]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :nucleo_formacao, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :nucleo_formacao, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:nucleo_formacao]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :grupo_mestre, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :grupo_mestre, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:grupo_mestre]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :radio, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :radio, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:radio]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :estudio, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :estudio, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:estudio]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :roupa_acessorio, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :roupa_acessorio, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:roupa_acessorio]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :evento, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :evento, 'Sim' => true, 'Não' => false %>
+    </div>
+    <%= error_span(@entidade[:evento]) %>
+  </div>
+
+<!--
+  <div class="control-group">
+    <%= f.label :latitude, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :latitude, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:latitude]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :longitude, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :longitude, :class => 'form-control' %>
+    </div>
+    <%= error_span(@entidade[:longitude]) %>
+  </div>
+-->
+
+  <br/>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            entidades_path, :class => 'btn btn-default' %>
+
+<% end %>
