@@ -4,8 +4,6 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:slug) %>:</strong></dt>
-  <dd><%= @entidade.slug %></dd>
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
   <dd><%= @entidade.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:responsavel) %>:</strong></dt>
@@ -18,8 +16,6 @@
   <dd><%= @entidade.endereco %></dd>
   <dt><strong><%= model_class.human_attribute_name(:telefone) %>:</strong></dt>
   <dd><%= @entidade.telefone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
-  <dd><%= @entidade.descricao %></dd>
   <dt><strong><%= model_class.human_attribute_name(:descritor) %>:</strong></dt>
   <dd><%= @entidade.descritor %></dd>
   <dt><strong><%= model_class.human_attribute_name(:telecentro) %>:</strong></dt>
@@ -57,6 +53,9 @@
     <dt><strong><%= model_class.human_attribute_name(:longitude) %>:</strong></dt>
     <dd><%= @entidade.longitude %></dd>
   -->
+
+  <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
+  <dd><%= @entidade.descricao %></dd>
 
   <br/>
   <dt><strong>Localização</strong></dt>

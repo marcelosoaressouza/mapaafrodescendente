@@ -18,25 +18,15 @@
   <div class="control-group">
     <%= f.label :entidade, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :entidade, :class => 'form-control' %>
+      <%= f.text_field :entidade, :autofocus => true, :class => 'form-control', :maxlength => '254' %>
     </div>
     <%= error_span(@entidade[:entidade]) %>
   </div>
 
-<!--
-  <div class="control-group">
-    <%= f.label :slug, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :slug, :class => 'form-control' %>
-    </div>
-    <%= error_span(@entidade[:slug]) %>
-  </div>
--->
-
   <div class="control-group">
     <%= f.label :email, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :email, :class => 'form-control' %>
+      <%= f.text_field :email, :class => 'form-control', :maxlength => '254' %>
     </div>
     <%= error_span(@entidade[:email]) %>
   </div>
@@ -44,11 +34,28 @@
   <div class="control-group">
     <%= f.label :responsavel, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :responsavel, :class => 'form-control' %>
+      <%= f.text_field :responsavel, :class => 'form-control', :maxlength => '254' %>
     </div>
     <%= error_span(@entidade[:responsavel]) %>
   </div>
 
+  <div class="control-group">
+    <%= f.label :uf, :class => 'control-label' %>
+    <div class="controls">
+        <%= f.collection_select :uf, Uf.all, :nome, :nome, {:prompt => true}, :id => 'uf' %>
+    </div>
+    <%= error_span(@entidade[:uf]) %>
+  </div>
+
+<div class="control-group" id='select-municipio'>
+  <%= f.label :municipio, 'municipio', :class => 'control-label' %>
+  <div class="controls">
+    <% municipios = Municipio.from("municipios, ufs as estado").where("estado.nome ILIKE ?", @entidade.uf).where("estado.id = municipios.estado_id") %>
+    <%= f.collection_select :municipio, municipios, :nome, :nome, { :selected => @entidade.municipio.to_s }, :id => 'municipio' %>
+  </div>
+</div>
+
+<!--
   <div class="control-group">
     <%= f.label :municipio, :class => 'control-label' %>
     <div class="controls">
@@ -56,19 +63,12 @@
     </div>
     <%= error_span(@entidade[:municipio]) %>
   </div>
-
-  <div class="control-group">
-    <%= f.label :uf, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :uf, :class => 'form-control' %>
-    </div>
-    <%= error_span(@entidade[:uf]) %>
-  </div>
+-->
 
   <div class="control-group">
     <%= f.label :endereco, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :endereco, :class => 'form-control' %>
+      <%= f.text_field :endereco, :class => 'form-control', :maxlength => '254' %>
     </div>
     <%= error_span(@entidade[:endereco]) %>
   </div>
@@ -79,14 +79,6 @@
       <%= f.text_field :telefone, :class => 'form-control' %>
     </div>
     <%= error_span(@entidade[:telefone]) %>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :descricao, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :descricao, :class => 'form-control' %>
-    </div>
-    <%= error_span(@entidade[:descricao]) %>
   </div>
 
   <div class="control-group">
@@ -207,6 +199,14 @@
       <%= f.select :evento, 'Sim' => true, 'Não' => false %>
     </div>
     <%= error_span(@entidade[:evento]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :descricao, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :descricao,:class => 'form-control', :cols => 64, :rows => 6, :maxlength => '4096' %>
+    </div>
+    <%= error_span(@entidade[:descricao]) %>
   </div>
 
 <!--

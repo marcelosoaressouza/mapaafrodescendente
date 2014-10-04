@@ -17,7 +17,7 @@
     <% @entidades.each do |entidade| %>
       <tr>
         <td><%= link_to entidade.id, entidade_path(entidade) %></td>
-        <td><%= entidade.entidade %></td>
+        <td><%= link_to entidade.entidade, entidade_path(entidade) %></td>
         <td><%= entidade.email %></td>
         <td><%= entidade.municipio %></td>
         <td><%= entidade.uf %></td>

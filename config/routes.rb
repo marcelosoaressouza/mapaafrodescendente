@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'municipios/index'
+
   resources :entidades
 
   devise_for :users
@@ -6,4 +8,5 @@ Rails.application.routes.draw do
   get 'principal/index'
 
   root 'principal#index'
+  get '/ufs/:sigla/municipios', :to => 'municipios#index'
 end

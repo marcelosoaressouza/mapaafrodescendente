@@ -13,6 +13,26 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
 //= require leaflet
 //= require_tree .
+
+$(document).ready(function() {
+
+  $('#uf').on('change', function() {
+    if ($('#uf').val()) {
+      $.getJSON('/ufs/' + $(this).val() + '/municipios.json', function(data) {
+        $('#municipio').empty();
+
+        $.each(data, function(i, item) {
+          $('#municipio').append('<option value="' + item.nome + '">' + item.nome + '</option>');
+        });
+      });
+    }
+    else
+    {
+      $('#municipio').empty();
+    }
+  });
+
+});
+
