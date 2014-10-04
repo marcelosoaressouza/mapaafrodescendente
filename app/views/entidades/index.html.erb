@@ -1,15 +1,15 @@
 <%- model_class = Entidade -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h3><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>#</th>
-      <th><%= model_class.human_attribute_name(:entidade) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:municipio) %></th>
-      <th><%= model_class.human_attribute_name(:uf) %></th>
+      <th>Entidade</th>
+      <th>E-Mail</th>
+      <th>Município</th>
+      <th>UF</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>

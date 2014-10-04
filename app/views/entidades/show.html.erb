@@ -1,60 +1,52 @@
 <%- model_class = Entidade -%>
 <div class="page-header">
-  <h1><%=@entidade.entidade %></h1>
+  <h3><%=@entidade.entidade %></h3>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dt><strong>E-Mail:</strong></dt>
   <dd><%= @entidade.email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:responsavel) %>:</strong></dt>
+  <dt><strong>Responsável:</strong></dt>
   <dd><%= @entidade.responsavel %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:municipio) %>:</strong></dt>
+  <dt><strong>Município:</strong></dt>
   <dd><%= @entidade.municipio %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:uf) %>:</strong></dt>
+  <dt><strong>UF:</strong></dt>
   <dd><%= @entidade.uf %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:endereco) %>:</strong></dt>
+  <dt><strong>Endereço:</strong></dt>
   <dd><%= @entidade.endereco %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telefone) %>:</strong></dt>
+  <dt><strong>Telefone:</strong></dt>
   <dd><%= @entidade.telefone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:descritor) %>:</strong></dt>
+  <dt><strong>Descritor GESAC:</strong></dt>
   <dd><%= @entidade.descritor %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:telecentro) %>:</strong></dt>
+  <dt><strong>Possui Telecentro?:</strong></dt>
   <dd><%= I18n.t(@entidade.telecentro.to_s) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:gesac) %>:</strong></dt>
+  <dt><strong>É GESAC?:</strong></dt>
   <dd><%= I18n.t(@entidade.gesac) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:ponto_cultura) %>:</strong></dt>
+  <dt><strong>É Ponto de Cultura?:</strong></dt>
   <dd><%= I18n.t(@entidade.ponto_cultura) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:estudo_cultural) %>:</strong></dt>
+  <dt><strong>Possui Estudos Culturais?:</strong></dt>
   <dd><%= I18n.t(@entidade.estudo_cultural) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:quilombo) %>:</strong></dt>
+  <dt><strong>É Quilombo?:</strong></dt>
   <dd><%= I18n.t(@entidade.quilombo) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:quilombo_urbano) %>:</strong></dt>
+  <dt><strong>É Quilombo Urbano?:</strong></dt>
   <dd><%= I18n.t(@entidade.quilombo_urbano) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:capoeira) %>:</strong></dt>
+  <dt><strong>Possui Capoeira?:</strong></dt>
   <dd><%= I18n.t(@entidade.capoeira) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:terreiro) %>:</strong></dt>
+  <dt><strong>É Terreiro?:</strong></dt>
   <dd><%= I18n.t(@entidade.terreiro) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:nucleo_formacao) %>:</strong></dt>
+  <dt><strong>Possui Núcleo de Formação?:</strong></dt>
   <dd><%= I18n.t(@entidade.nucleo_formacao) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:grupo_mestre) %>:</strong></dt>
+  <dt><strong>Possui Grupo de Mestres?:</strong></dt>
   <dd><%= I18n.t(@entidade.grupo_mestre) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:radio) %>:</strong></dt>
+  <dt><strong>Possui Rádio?:</strong></dt>
   <dd><%= I18n.t(@entidade.radio) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:estudio) %>:</strong></dt>
+  <dt><strong>Possui Estúdo?:</strong></dt>
   <dd><%= I18n.t(@entidade.estudio) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:roupa_acessorio) %>:</strong></dt>
+  <dt><strong>Possui Roupas e Acessórios?:</strong></dt>
   <dd><%= I18n.t(@entidade.roupa_acessorio) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:evento) %>:</strong></dt>
+  <dt><strong>Realiza Eventos?:</strong></dt>
   <dd><%= I18n.t(@entidade.evento) %></dd>
-
-  <!--
-    <dt><strong><%= model_class.human_attribute_name(:latitude) %>:</strong></dt>
-    <dd><%= @entidade.latitude %></dd>
-    <dt><strong><%= model_class.human_attribute_name(:longitude) %>:</strong></dt>
-    <dd><%= @entidade.longitude %></dd>
-  -->
-
-  <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
+  <dt><strong>Descrição:</strong></dt>
   <dd><%= @entidade.descricao %></dd>
 
   <br/>

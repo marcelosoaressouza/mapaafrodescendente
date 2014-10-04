@@ -16,7 +16,7 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :entidade, :class => 'control-label' %>
+    <%= f.label "Entidade", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :entidade, :autofocus => true, :class => 'form-control', :maxlength => '254' %>
     </div>
@@ -24,7 +24,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :email, :class => 'control-label' %>
+    <%= f.label "E-Mail", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :email, :class => 'form-control', :maxlength => '254' %>
     </div>
@@ -32,7 +32,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :responsavel, :class => 'control-label' %>
+    <%= f.label "Responsável", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :responsavel, :class => 'form-control', :maxlength => '254' %>
     </div>
@@ -40,7 +40,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :uf, :class => 'control-label' %>
+    <%= f.label "UF", :class => 'control-label' %>
     <div class="controls">
         <%= f.collection_select :uf, Uf.all, :nome, :nome, {:prompt => true}, :id => 'uf' %>
     </div>
@@ -48,25 +48,15 @@
   </div>
 
 <div class="control-group" id='select-municipio'>
-  <%= f.label :municipio, 'municipio', :class => 'control-label' %>
+  <%= f.label "Município", 'municipio', :class => 'control-label' %>
   <div class="controls">
     <% municipios = Municipio.from("municipios, ufs as estado").where("estado.nome ILIKE ?", @entidade.uf).where("estado.id = municipios.estado_id") %>
     <%= f.collection_select :municipio, municipios, :nome, :nome, { :selected => @entidade.municipio.to_s }, :id => 'municipio' %>
   </div>
 </div>
 
-<!--
   <div class="control-group">
-    <%= f.label :municipio, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :municipio, :class => 'form-control' %>
-    </div>
-    <%= error_span(@entidade[:municipio]) %>
-  </div>
--->
-
-  <div class="control-group">
-    <%= f.label :endereco, :class => 'control-label' %>
+    <%= f.label "Endereço", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :endereco, :class => 'form-control', :maxlength => '254' %>
     </div>
@@ -74,7 +64,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :telefone, :class => 'control-label' %>
+    <%= f.label "Telefone", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :telefone, :class => 'form-control' %>
     </div>
@@ -82,7 +72,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :descritor, :class => 'control-label' %>
+    <%= f.label "Descritor GESAC", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :descritor, :class => 'form-control' %>
     </div>
@@ -90,7 +80,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :telecentro, :class => 'control-label' %>
+    <%= f.label "Possui Telecentro?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :telecentro, 'Sim' => true, 'Não' => false %>
     </div>
@@ -98,7 +88,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :gesac, :class => 'control-label' %>
+    <%= f.label "É GESAC?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :gesac, 'Sim' => true, 'Não' => false %>
     </div>
@@ -106,7 +96,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :ponto_cultura, :class => 'control-label' %>
+    <%= f.label "É Ponto de Cultura?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :ponto_cultura, 'Sim' => true, 'Não' => false %>
     </div>
@@ -114,7 +104,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :estudo_cultural, :class => 'control-label' %>
+    <%= f.label "Possui Estudos Culturais?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :estudo_cultural, 'Sim' => true, 'Não' => false %>
     </div>
@@ -122,7 +112,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :quilombo, :class => 'control-label' %>
+    <%= f.label "É Quilombo?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :quilombo, 'Sim' => true, 'Não' => false %>
     </div>
@@ -130,7 +120,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :quilombo_urbano, :class => 'control-label' %>
+    <%= f.label "É Quilombo Urbano?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :quilombo_urbano, 'Sim' => true, 'Não' => false %>
     </div>
@@ -138,7 +128,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :capoeira, :class => 'control-label' %>
+    <%= f.label "Possui Capoeira?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :capoeira, 'Sim' => true, 'Não' => false %>
     </div>
@@ -146,7 +136,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :terreiro, :class => 'control-label' %>
+    <%= f.label "É Terreiro?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :terreiro, 'Sim' => true, 'Não' => false %>
     </div>
@@ -154,7 +144,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :nucleo_formacao, :class => 'control-label' %>
+    <%= f.label "Possui Núcleo de Formação?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :nucleo_formacao, 'Sim' => true, 'Não' => false %>
     </div>
@@ -162,7 +152,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :grupo_mestre, :class => 'control-label' %>
+    <%= f.label "Grupo de Mestre?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :grupo_mestre, 'Sim' => true, 'Não' => false %>
     </div>
@@ -170,7 +160,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :radio, :class => 'control-label' %>
+    <%= f.label "Possuí Rádio?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :radio, 'Sim' => true, 'Não' => false %>
     </div>
@@ -178,7 +168,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :estudio, :class => 'control-label' %>
+    <%= f.label "Possui Estúdio?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :estudio, 'Sim' => true, 'Não' => false %>
     </div>
@@ -186,7 +176,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :roupa_acessorio, :class => 'control-label' %>
+    <%= f.label "Possui Roupas e Acessórios?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :roupa_acessorio, 'Sim' => true, 'Não' => false %>
     </div>
@@ -194,7 +184,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :evento, :class => 'control-label' %>
+    <%= f.label "Realiza Eventos?", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :evento, 'Sim' => true, 'Não' => false %>
     </div>
@@ -202,7 +192,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :descricao, :class => 'control-label' %>
+    <%= f.label "Descrição", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :descricao,:class => 'form-control', :cols => 64, :rows => 6, :maxlength => '4096' %>
     </div>
