@@ -33,7 +33,7 @@ class ProjetosController < ApplicationController
 
     respond_to do |format|
       if @projeto.save
-        format.html { redirect_to entidade_projetos_path, notice: 'Projeto was successfully created.' }
+        format.html { redirect_to entidade_projetos_path, notice: 'Projeto foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @projeto }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class ProjetosController < ApplicationController
     @dados = Entidade.friendly.find(params[:entidade_id])
     respond_to do |format|
       if @projeto.update(projeto_params)
-        format.html { redirect_to entidade_projetos_path, notice: 'Projeto was successfully updated.' }
+        format.html { redirect_to entidade_projetos_path, notice: 'Projeto foi editado com sucesso.' }
         format.json { render :show, status: :ok, location: @projeto }
       else
         format.html { render :edit }
@@ -62,7 +62,7 @@ class ProjetosController < ApplicationController
   def destroy
     @projeto.destroy
     respond_to do |format|
-      format.html { redirect_to entidade_projetos_url, notice: 'Projeto was successfully destroyed.' }
+      format.html { redirect_to entidade_projetos_url, notice: 'Projeto foi apagado com sucesso.' }
       format.json { head :no_content }
     end
   end

@@ -33,7 +33,7 @@ class FotosController < ApplicationController
 
     respond_to do |format|
       if @foto.save
-        format.html { redirect_to entidade_fotos_path, notice: 'Foto was successfully created.' }
+        format.html { redirect_to entidade_fotos_path, notice: 'Foto foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @foto }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class FotosController < ApplicationController
   def update
     respond_to do |format|
       if @foto.update(foto_params)
-        format.html { redirect_to entidade_fotos_path, notice: 'Foto was successfully updated.' }
+        format.html { redirect_to entidade_fotos_path, notice: 'Foto foi editado com sucesso.' }
         format.json { render :show, status: :ok, location: @foto }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class FotosController < ApplicationController
   def destroy
     @foto.destroy
     respond_to do |format|
-      format.html { redirect_to entidade_fotos_url, notice: 'Foto was successfully destroyed.' }
+      format.html { redirect_to entidade_fotos_url, notice: 'Foto foi apagado com sucesso.' }
       format.json { head :no_content }
     end
   end

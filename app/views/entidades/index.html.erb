@@ -11,6 +11,10 @@
       <th>UF</th>
       <th>Projetos</th>
       <th>Fotos</th>
+      <th>Áudios</th>
+      <th>Vídeos</th>
+      <th>Textos</th>
+      <th>Cursos</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,8 +25,12 @@
         <td><%= link_to entidade.entidade, entidade_path(entidade) %></td>
         <td><%= entidade.municipio %></td>
         <td><%= entidade.uf %></td>
-        <td><%= entidade.projetos.size %></td>
-        <td><%= entidade.fotos.size %></td>
+        <td><%= link_to entidade.projetos.size, entidade_projetos_path(entidade) %></td>
+        <td><%= link_to entidade.fotos.size, entidade_fotos_path(entidade) %></td>
+        <td><%= link_to entidade.audios.size, entidade_audios_path(entidade) %></td>
+        <td><%= link_to entidade.videos.size, entidade_videos_path(entidade) %></td>
+        <td><%= link_to entidade.textos.size, entidade_textos_path(entidade) %></td>
+        <td><%= link_to entidade.cursos.size, entidade_cursos_path(entidade) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_entidade_path(entidade), :class => 'btn btn-default btn-xs' %>

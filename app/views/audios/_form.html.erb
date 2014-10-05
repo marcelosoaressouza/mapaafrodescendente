@@ -1,0 +1,42 @@
+<%= form_for [@dados, @audio], :html => { :multipart => true, :class => "form-horizontal audio" } do |f| %>
+
+    <% if @audio.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@audio.errors.count, "error") %> prohibited this audio from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @audio.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :titulo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :titulo, :class => 'form-control' %>
+    </div>
+    <%= error_span(@audio[:titulo]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :arquivo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :arquivo %>
+    </div>
+    <%= error_span(@audio[:arquivo]) %>
+  </div>
+
+<%= f.hidden_field :entidade_id, :value => @dados.id %>
+
+<br/>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            entidade_audios_path, :class => 'btn btn-default' %>
+
+<% end %>
