@@ -15,4 +15,7 @@ class Entidade < ActiveRecord::Base
   has_many :textos,   :dependent => :destroy
   has_many :cursos,   :dependent => :destroy
   has_many :projetos, :dependent => :destroy
+
+  validates :entidade, :presence => true, :length => { :minimum => 5 }
+
 end

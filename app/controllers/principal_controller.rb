@@ -4,7 +4,7 @@ class PrincipalController < ApplicationController
     @markers = []
 
     @entidades.each do |entidade| 
-     @markers << { :latlng => [entidade.latitude, entidade.longitude], :popup => "<a href=\"/entidades/#{entidade.slug}\" > #{entidade.entidade} </a>" }
+     @markers << { :latlng => [entidade.latitude, entidade.longitude], :popup => "<center><h3><a href=\"/entidades/#{entidade.slug}\" > #{entidade.entidade} </a></h3></center>" }
     end
   end
 end

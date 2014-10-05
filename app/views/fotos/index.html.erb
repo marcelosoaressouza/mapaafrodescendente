@@ -2,6 +2,7 @@
 <div class="page-header">
   <h3><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
 </div>
+<% if @fotos.size > 0%>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -17,20 +18,37 @@
         <td><%= link_to foto.id, entidade_fotos_path(@dados) %></td>
         <td><%= foto.titulo %></td>
         <td><%= link_to (image_tag foto.imagem.url(:thumb), :alt => foto.titulo, :title => foto.titulo), foto.imagem.url %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_entidade_foto_path(@dados, foto), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      entidade_foto_path(@dados, foto),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
+        <% if user_signed_in? %>
+           <% if (current_user.email == foto.entidade.email || current_user.admin?) %>
+             <td>
+               <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_foto_path(@dados, foto), :class => 'btn btn-default btn-xs' %>
+               <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_foto_path(@dados, foto), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) }, :class => 'btn btn-xs btn-danger' %>
+             </td>
+           <% else %>
+             <td></td>
+           <% end %>
+         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_entidade_foto_path,
-            :class => 'btn btn-primary' %>
+<% if user_signed_in? %>
+  <% if (current_user.email == @dados.email || current_user.admin?) %>
+    <%= link_to t('.new', :default => t("helpers.links.new")), new_entidade_foto_path, :class => 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+<% else %>
+  <center>
+  <h3>
+    Nenhuma Foto Enviada
+    <% if user_signed_in? %>
+      <% if (current_user.email == @dados.email || current_user.admin?) %>
+        <br/></br>
+        <%= link_to "Clique Aqui para Enviar uma Foto", new_entidade_foto_path %>
+      <% end %>
+    <% end %>
+  </h3>
+  </center>
+<% end %>

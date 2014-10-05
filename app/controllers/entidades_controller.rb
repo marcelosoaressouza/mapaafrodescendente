@@ -20,6 +20,9 @@ class EntidadesController < ApplicationController
 
   # GET /entidades/1/edit
   def edit
+    @entidade = Entidade.friendly.find(params[:id])
+
+    return false if !owner_verify(@entidade, entidade_url)
   end
 
   # POST /entidades

@@ -66,8 +66,8 @@
 <%= link_to t('.back', :default => t("helpers.links.back")),
               entidades_path, :class => 'btn btn-default'  %>
 <% if user_signed_in? %>
-  <% if (current_user.email == entidade.email || current_user.admin?) %>
+  <% if (current_user.email == @entidade.email || current_user.admin?) %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_path(@entidade), :class => 'btn btn-default' %>
-    <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_path(@entidade), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_path(@entidade), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) }, :class => 'btn btn-danger' %>
   <% end %>
 <% end %>

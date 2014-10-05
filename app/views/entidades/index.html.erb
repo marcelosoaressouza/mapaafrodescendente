@@ -14,7 +14,9 @@
       <th>Vídeos</th>
       <th>Textos</th>
       <th>Cursos</th>
-      <th><%=t '.actions', :default => t("helpers.actions") if user_signed_in? %></th>
+      <% if user_signed_in? %>
+        <th> <%= t '.actions', :default => t("helpers.actions") %> </th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -32,9 +34,11 @@
         <% if user_signed_in? %>
            <% if (current_user.email == entidade.email || current_user.admin?) %>
              <td>
-              <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_path(entidade), :class => 'btn btn-default btn-xs' %>
-              <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_path(entidade), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger' %>
+               <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_path(entidade), :class => 'btn btn-default btn-xs' %>
+               <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_path(entidade), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) }, :class => 'btn btn-xs btn-danger' %>
             </td>
+          <% else %>
+            <td></td>
           <% end %>
         <% end %>
       </tr>
