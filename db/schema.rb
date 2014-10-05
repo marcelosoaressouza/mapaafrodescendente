@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004192223) do
+ActiveRecord::Schema.define(version: 20141005000132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,19 @@ ActiveRecord::Schema.define(version: 20141004192223) do
   add_index "entidades", ["entidade"], name: "index_entidades_on_entidade", unique: true, using: :btree
   add_index "entidades", ["slug"], name: "index_entidades_on_slug", unique: true, using: :btree
 
+  create_table "fotos", force: true do |t|
+    t.string   "titulo"
+    t.integer  "entidade_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "imagem_file_name"
+    t.string   "imagem_content_type"
+    t.integer  "imagem_file_size"
+    t.datetime "imagem_updated_at"
+  end
+
+  add_index "fotos", ["entidade_id"], name: "index_fotos_on_entidade_id", using: :btree
+
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -71,6 +84,23 @@ ActiveRecord::Schema.define(version: 20141004192223) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "projetos", force: true do |t|
+    t.string   "nome"
+    t.string   "convenio"
+    t.date     "data_inicio"
+    t.date     "data_fim"
+    t.string   "categoria"
+    t.string   "dificuldade"
+    t.string   "impacto"
+    t.string   "positivo"
+    t.string   "parceiro"
+    t.integer  "entidade_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "projetos", ["entidade_id"], name: "index_projetos_on_entidade_id", using: :btree
 
   create_table "ufs", force: true do |t|
     t.string   "nome"

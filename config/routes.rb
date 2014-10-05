@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  resources :projetos
+
   get 'municipios/index'
 
-  resources :entidades
+  resources :entidades do
+    resources :fotos,  :controller => "fotos"
+    resources :projetos,  :controller => "projetos"
+  end
+
 
   devise_for :users
 

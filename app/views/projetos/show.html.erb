@@ -1,0 +1,40 @@
+<%- model_class = Projeto -%>
+<div class="page-header">
+  <h3><%= @projeto.nome %></h3>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Convênios:</strong></dt>
+  <dd><%= @projeto.convenio %></dd>
+
+  <dt><strong>Data de Início:</strong></dt>
+  <dd><%= @projeto.data_inicio %></dd>
+
+  <dt><strong>Data de Fim:</strong></dt>
+  <dd><%= @projeto.data_fim %></dd>
+
+  <dt><strong>Categorias:</strong></dt>
+  <dd><%= @projeto.categoria %></dd>
+
+  <dt><strong>Dificuldades:</strong></dt>
+  <dd><%= @projeto.dificuldade %></dd>
+
+  <dt><strong>Impactos:</strong></dt>
+  <dd><%= @projeto.impacto %></dd>
+
+  <dt><strong>Positivos:</strong></dt>
+  <dd><%= @projeto.positivo %></dd>
+
+  <dt><strong>Parceiros:</strong></dt>
+  <dd><%= @projeto.parceiro %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              entidade_projetos_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_entidade_projeto_path(@projeto), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              entidade_projeto_path(@projeto),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

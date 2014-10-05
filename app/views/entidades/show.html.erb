@@ -1,8 +1,9 @@
 <%- model_class = Entidade -%>
 <div class="page-header">
   <h3><%=@entidade.entidade %></h3>
+<%= link_to "Fotos", entidade_fotos_path(@entidade) %>
+<%= link_to "Projetos", entidade_projetos_path(@entidade) %>
 </div>
-
 <dl class="dl-horizontal">
   <dt><strong>E-Mail:</strong></dt>
   <dd><%= @entidade.email %></dd>

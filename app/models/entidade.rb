@@ -8,4 +8,7 @@ class Entidade < ActiveRecord::Base
   def localizacao
      "#{self.municipio}, #{self.uf}, Brasil"
   end
+
+  has_many :fotos
+  has_many :projetos
 end

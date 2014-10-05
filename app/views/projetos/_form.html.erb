@@ -1,0 +1,89 @@
+<%= form_for [@dados, @projeto], :html => { :class => "form-horizontal projeto" } do |f| %>
+
+    <% if @projeto.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@projeto.errors.count, "error") %> prohibited this projeto from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @projeto.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label "Nome", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:nome]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label "Convênios", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :convenio, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:convenio]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label "Data de Início", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_inicio, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:data_inicio]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label "Data de Fim", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :data_fim, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:data_fim]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label "Categorias", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :categoria, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:categoria]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label "Dificuldades", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :dificuldade, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:dificuldade]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label "Impacto", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :impacto, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:impacto]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label "Pontos Positivos", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :positivo, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:positivo]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label "Parceiros", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :parceiro, :class => 'form-control' %>
+    </div>
+    <%= error_span(@projeto[:parceiro]) %>
+  </div>
+
+  <%= f.hidden_field :entidade_id, :value => @dados.id %>
+
+  <br/>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            entidade_projetos_path, :class => 'btn btn-default' %>
+
+<% end %>

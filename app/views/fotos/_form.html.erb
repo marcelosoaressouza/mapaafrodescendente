@@ -1,0 +1,42 @@
+<%= form_for [@dados, @foto], :html => { :multipart => true, :class => "form-horizontal foto" } do |f| %>
+
+    <% if @foto.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@foto.errors.count, "error") %> prohibited this foto from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @foto.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :titulo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :titulo, :class => 'form-control' %>
+    </div>
+    <%= error_span(@foto[:titulo]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :imagem, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :imagem %>
+    </div>
+    <%= error_span(@foto[:imagem]) %>
+  </div>
+
+<%= f.hidden_field :entidade_id, :value => @dados.id %>
+
+<br/>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            entidade_fotos_path, :class => 'btn btn-default' %>
+
+<% end %>

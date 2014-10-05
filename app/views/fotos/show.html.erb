@@ -1,0 +1,23 @@
+<%- model_class = Foto -%>
+<div class="page-header">
+  <h3><%= @foto.titulo %></h3>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:titulo) %>:</strong></dt>
+  <dd><%= @foto.titulo %></dd>
+  <dt><strong>Foto:</strong></dt><br/>
+  <dd>
+    <%= link_to (image_tag @foto.imagem.url(:medium), :alt => @foto.titulo, :title => @foto.titulo), @foto.imagem.url %>
+  </dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              entidade_fotos_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_entidade_foto_path(@dados, @foto), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              entidade_foto_path(@dados, @foto),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
