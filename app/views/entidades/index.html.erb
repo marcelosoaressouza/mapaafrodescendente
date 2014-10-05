@@ -22,7 +22,7 @@
   <tbody>
     <% @entidades.each do |entidade| %>
       <tr>
-        <td><%= link_to entidade.id, entidade_path(entidade) %></td>
+        <td> <%= "-->" if (current_user.email == entidade.email) if user_signed_in? %> <%= link_to entidade.id, entidade_path(entidade) %></td>
         <td><%= link_to truncate(entidade.entidade, :length => 64, :omission => '...'), entidade_path(entidade) %></td>
         <td><%= entidade.uf %></td>
         <td><%= link_to entidade.projetos.size, entidade_projetos_path(entidade) %></td>

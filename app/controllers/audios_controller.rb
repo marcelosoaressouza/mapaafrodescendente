@@ -19,11 +19,13 @@ class AudiosController < ApplicationController
   def new
     @audio = Audio.new
     @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_audios_url)
   end
 
   # GET /audios/1/edit
   def edit
-     @dados = Entidade.friendly.find(params[:entidade_id])
+    @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_audios_url)
  end
 
   # POST /audios

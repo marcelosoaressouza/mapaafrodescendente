@@ -1,7 +1,10 @@
 <%- model_class = Projeto -%>
 <div class="page-header">
   <h3><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
+  <%= link_to "Voltar", entidade_path(@dados) %>
 </div>
+
+<% if @projetos.size > 0%>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -10,31 +13,50 @@
       <th>Convênios</th>
       <th>Data Início</th>
       <th>Data Fim</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% if user_signed_in? %>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
     <% @projetos.each do |projeto| %>
       <tr>
-        <td><%= link_to projeto.id, entidade_projetos_path(@dados) %></td>
-        <td><%= link_to projeto.nome, entidade_projetos_path(@dados) %></td>
+        <td><%= link_to projeto.id, entidade_projeto_path(@dados, projeto) %></td>
+        <td><%= link_to projeto.nome, entidade_projeto_path(@dados, projeto) %></td>
         <td><%= projeto.convenio %></td>
         <td><%= projeto.data_inicio %></td>
         <td><%= projeto.data_fim %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_entidade_projeto_path(@dados, projeto), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      entidade_projeto_path(@dados, projeto),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
+        <% if user_signed_in? %>
+           <% if (current_user.email == projeto.entidade.email || current_user.admin?) %>
+            <td>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_projeto_path(@dados, projeto), :class => 'btn btn-default btn-xs' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_projeto_path(@dados, projeto), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) }, :class => 'btn btn-xs btn-danger' %>
+            </td>
+        <% end %>
+      <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_entidade_projeto_path,
-            :class => 'btn btn-primary' %>
+<% if user_signed_in? %>
+  <% if (current_user.email == @dados.email || current_user.admin?) %>
+    <%= link_to t('.new', :default => t("helpers.links.new")), new_entidade_projeto_path, :class => 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+<% else %>
+  <center>
+  <h3>
+    Nenhum Projeto Cadastrado
+    <% if user_signed_in? %>
+      <% if (current_user.email == @dados.email || current_user.admin?) %>
+        <br/></br>
+        <%= link_to "Clique Aqui para Cadastrar um Projeto", new_entidade_projeto_path %>
+      <% end %>
+    <% end %>
+  </h3>
+  </center>
+<% end %>
+
+

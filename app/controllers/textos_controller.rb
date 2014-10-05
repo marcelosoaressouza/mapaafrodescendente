@@ -19,11 +19,13 @@ class TextosController < ApplicationController
   def new
     @texto = Texto.new
     @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_textos_url)
   end
 
   # GET /textos/1/edit
   def edit
-     @dados = Entidade.friendly.find(params[:entidade_id])
+    @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_textos_url)
  end
 
   # POST /textos

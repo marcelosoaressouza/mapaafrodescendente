@@ -3,7 +3,7 @@
     <% if @projeto.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@projeto.errors.count, "error") %> prohibited this projeto from being saved:</h3>
+        <h3 class="panel-title"><%= pluralize(@projeto.errors.count, "error") %> impediu de gravar:</h3>
       </div>
       <div class="panel-body">
         <ul>
@@ -81,9 +81,11 @@
 
   <%= f.hidden_field :entidade_id, :value => @dados.id %>
 
-  <br/>
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            entidade_projetos_path, :class => 'btn btn-default' %>
-
+  <% if user_signed_in? %>
+    <br/>
+    <% if (current_user.email == @dados.email || current_user.admin?) ||  params[:action] == 'new' %>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), entidade_projetos_path, :class => 'btn btn-default' %>
+    <% end %>
+  <% end %>
 <% end %>

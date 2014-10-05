@@ -19,11 +19,13 @@ class ProjetosController < ApplicationController
   def new
     @projeto = Projeto.new
     @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_projetos_url)
   end
 
   # GET /projetos/1/edit
   def edit
     @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_projetos_url)
   end
 
   # POST /projetos

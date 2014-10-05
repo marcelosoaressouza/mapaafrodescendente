@@ -1,13 +1,14 @@
 <%- model_class = Entidade -%>
 <div class="page-header">
   <h3><%=@entidade.entidade %></h3>
-<%= link_to "Fotos", entidade_fotos_path(@entidade) %> | 
-<%= link_to "Projetos", entidade_projetos_path(@entidade) %> | 
-<%= link_to "Áudios", entidade_audios_path(@entidade) %> | 
-<%= link_to "Videos", entidade_videos_path(@entidade) %> | 
-<%= link_to "Textos", entidade_textos_path(@entidade) %> | 
-<%= link_to "Cursos", entidade_cursos_path(@entidade) %> 
+  <%= link_to "Projetos (#{@entidade.projetos.size.to_s})", entidade_projetos_path(@entidade) %> | 
+  <%= link_to "Fotos  (#{@entidade.fotos.size.to_s})", entidade_fotos_path(@entidade) %> | 
+  <%= link_to "Áudios (#{@entidade.audios.size.to_s})", entidade_audios_path(@entidade) %> | 
+  <%= link_to "Videos (#{@entidade.videos.size.to_s})", entidade_videos_path(@entidade) %> | 
+  <%= link_to "Textos (#{@entidade.textos.size.to_s})", entidade_textos_path(@entidade) %> | 
+  <%= link_to "Cursos (#{@entidade.cursos.size.to_s})", entidade_cursos_path(@entidade) %> 
 </div>
+
 <dl class="dl-horizontal">
   <dt><strong>E-Mail:</strong></dt>
   <dd><%= @entidade.email %></dd>
@@ -63,8 +64,7 @@
 
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              entidades_path, :class => 'btn btn-default'  %>
+<%= link_to t('.back', :default => t("helpers.links.back")), entidades_path, :class => 'btn btn-default'  %>
 <% if user_signed_in? %>
   <% if (current_user.email == @entidade.email || current_user.admin?) %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_path(@entidade), :class => 'btn btn-default' %>

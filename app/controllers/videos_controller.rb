@@ -19,11 +19,13 @@ class VideosController < ApplicationController
   def new
     @video = Video.new
     @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_videos_url)
   end
 
   # GET /videos/1/edit
   def edit
-     @dados = Entidade.friendly.find(params[:entidade_id])
+    @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_videos_url)
  end
 
   # POST /videos

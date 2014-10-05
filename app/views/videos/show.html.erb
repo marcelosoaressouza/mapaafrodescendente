@@ -6,18 +6,17 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:titulo) %>:</strong></dt>
   <dd><%= @video.titulo %></dd>
-  <dt><strong>Arquivo para Download:</strong></dt><br/>
+  <dt><strong>Video:</strong></dt>
   <dd>
-    <%= link_to "Download", video.arquivo.url %>
+    <%= link_to "Download", @video.arquivo.url %>
   </dd>
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              entidade_videos_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_entidade_video_path(@dados, @video), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              entidade_video_path(@dados, @video),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) },
-              :class => 'btn btn-danger' %>
+<%= link_to t('.back', :default => t("helpers.links.back")), entidade_videos_path, :class => 'btn btn-default'  %>
+
+<% if user_signed_in? %>
+  <% if (current_user.email == @video.entidade.email || current_user.admin?) %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_video_path(@dados, @video), :class => 'btn btn-default' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_video_path(@dados, @video), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) }, :class => 'btn btn-danger' %>
+  <% end %>
+<% end %>

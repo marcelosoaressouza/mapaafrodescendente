@@ -1,6 +1,7 @@
 <%- model_class = Foto -%>
 <div class="page-header">
   <h3><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
+  <%= link_to "Voltar", entidade_path(@dados) %>
 </div>
 <% if @fotos.size > 0%>
 <table class="table table-striped">
