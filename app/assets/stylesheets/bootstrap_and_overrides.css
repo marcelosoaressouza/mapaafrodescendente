@@ -15,3 +15,37 @@
     white-space: nowrap;
     width: 160px;
 }
+
+/*
+body {
+  background-image: url("/assets/Fundo.jpg");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-attachment: fixed; 
+}
+*/
+
+.navbar {
+  /* background-color: #FFBB4F; */
+  background-color: #FF9E0C;
+}
+
+.navbar-default .navbar-brand {
+  font-weight: 900;
+  color: #FFF;
+}
+
+.navbar-default .navbar-nav > li > a {
+  font-weight: 900;
+  color: #000;
+
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #FFF;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) {
+  background-color: #FFECD1;
+
+}
