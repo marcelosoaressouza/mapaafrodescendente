@@ -26,10 +26,19 @@
   <div class="control-group">
     <%= f.label "E-Mail", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :email, :class => 'form-control', :maxlength => '254' %>
+      <% if params[:action] == 'new' %>
+        <%= f.text_field :email, :value => current_user.email, :class => 'form-control', :maxlength => '254', :disabled => true %>
+      <% else %>
+        <%= f.text_field :email, :class => 'form-control', :maxlength => '254', :disabled => true %>
+      <% end %>
+
     </div>
     <%= error_span(@entidade[:email]) %>
   </div>
+
+  <% if params[:action] == 'new' %>
+    <%= f.hidden_field :email, :value => current_user.email %>
+  <% end %>
 
   <div class="control-group">
     <%= f.label "Responsável", :class => 'control-label' %>
@@ -82,7 +91,7 @@
   <div class="control-group">
     <%= f.label "Possui Telecentro?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :telecentro, 'Sim' => true, 'Não' => false %>
+      <%= f.select :telecentro, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:telecentro]) %>
   </div>
@@ -90,7 +99,7 @@
   <div class="control-group">
     <%= f.label "É GESAC?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :gesac, 'Sim' => true, 'Não' => false %>
+      <%= f.select :gesac, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:gesac]) %>
   </div>
@@ -98,7 +107,7 @@
   <div class="control-group">
     <%= f.label "É Ponto de Cultura?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :ponto_cultura, 'Sim' => true, 'Não' => false %>
+      <%= f.select :ponto_cultura, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:ponto_cultura]) %>
   </div>
@@ -106,7 +115,7 @@
   <div class="control-group">
     <%= f.label "Possui Estudos Culturais?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :estudo_cultural, 'Sim' => true, 'Não' => false %>
+      <%= f.select :estudo_cultural, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:estudo_cultural]) %>
   </div>
@@ -114,7 +123,7 @@
   <div class="control-group">
     <%= f.label "É Quilombo?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :quilombo, 'Sim' => true, 'Não' => false %>
+      <%= f.select :quilombo, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:quilombo]) %>
   </div>
@@ -122,7 +131,7 @@
   <div class="control-group">
     <%= f.label "É Quilombo Urbano?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :quilombo_urbano, 'Sim' => true, 'Não' => false %>
+      <%= f.select :quilombo_urbano, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:quilombo_urbano]) %>
   </div>
@@ -130,7 +139,7 @@
   <div class="control-group">
     <%= f.label "Possui Capoeira?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :capoeira, 'Sim' => true, 'Não' => false %>
+      <%= f.select :capoeira, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:capoeira]) %>
   </div>
@@ -138,7 +147,7 @@
   <div class="control-group">
     <%= f.label "É Terreiro?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :terreiro, 'Sim' => true, 'Não' => false %>
+      <%= f.select :terreiro, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:terreiro]) %>
   </div>
@@ -146,7 +155,7 @@
   <div class="control-group">
     <%= f.label "Possui Núcleo de Formação?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :nucleo_formacao, 'Sim' => true, 'Não' => false %>
+      <%= f.select :nucleo_formacao, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:nucleo_formacao]) %>
   </div>
@@ -154,7 +163,7 @@
   <div class="control-group">
     <%= f.label "Grupo de Mestre?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :grupo_mestre, 'Sim' => true, 'Não' => false %>
+      <%= f.select :grupo_mestre, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:grupo_mestre]) %>
   </div>
@@ -162,7 +171,7 @@
   <div class="control-group">
     <%= f.label "Possuí Rádio?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :radio, 'Sim' => true, 'Não' => false %>
+      <%= f.select :radio, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:radio]) %>
   </div>
@@ -170,7 +179,7 @@
   <div class="control-group">
     <%= f.label "Possui Estúdio?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :estudio, 'Sim' => true, 'Não' => false %>
+      <%= f.select :estudio, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:estudio]) %>
   </div>
@@ -178,7 +187,7 @@
   <div class="control-group">
     <%= f.label "Possui Roupas e Acessórios?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :roupa_acessorio, 'Sim' => true, 'Não' => false %>
+      <%= f.select :roupa_acessorio, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:roupa_acessorio]) %>
   </div>
@@ -186,7 +195,7 @@
   <div class="control-group">
     <%= f.label "Realiza Eventos?", :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :evento, 'Sim' => true, 'Não' => false %>
+      <%= f.select :evento, 'Não' => false, 'Sim' => true %>
     </div>
     <%= error_span(@entidade[:evento]) %>
   </div>
@@ -199,27 +208,12 @@
     <%= error_span(@entidade[:descricao]) %>
   </div>
 
-<!--
-  <div class="control-group">
-    <%= f.label :latitude, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :latitude, :class => 'form-control' %>
-    </div>
-    <%= error_span(@entidade[:latitude]) %>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :longitude, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :longitude, :class => 'form-control' %>
-    </div>
-    <%= error_span(@entidade[:longitude]) %>
-  </div>
--->
-
-  <br/>
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            entidades_path, :class => 'btn btn-default' %>
+  <% if user_signed_in? %>
+    <br/>
+    <% if (current_user.email == @entidade.email || current_user.admin?) ||  params[:action] == 'new' %>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), entidades_path, :class => 'btn btn-default' %>
+    <% end %>
+  <% end %>
 
 <% end %>

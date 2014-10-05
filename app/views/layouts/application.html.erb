@@ -49,6 +49,11 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Listar Todas", "/entidades"  %></li>
+            <% if user_signed_in? %>
+              <li> <%= link_to "Sair" + " (" + current_user.email + ")", destroy_user_session_path, :method => :delete %> </li>
+            <% else %>
+              <li> <%= link_to "Logar", new_user_session_path, :id => 'popover-login', 'data-content' => 'Logar no Mapa da Cultura', 'data-placement' => 'bottom' %> </li>
+            <% end %>
           </ul>
         </div>
       </div>

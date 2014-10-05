@@ -7,7 +7,6 @@
     <tr>
       <th>#</th>
       <th>Entidade</th>
-      <th>Município</th>
       <th>UF</th>
       <th>Projetos</th>
       <th>Fotos</th>
@@ -15,15 +14,14 @@
       <th>Vídeos</th>
       <th>Textos</th>
       <th>Cursos</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") if user_signed_in? %></th>
     </tr>
   </thead>
   <tbody>
     <% @entidades.each do |entidade| %>
       <tr>
         <td><%= link_to entidade.id, entidade_path(entidade) %></td>
-        <td><%= link_to entidade.entidade, entidade_path(entidade) %></td>
-        <td><%= entidade.municipio %></td>
+        <td><%= link_to truncate(entidade.entidade, :length => 64, :omission => '...'), entidade_path(entidade) %></td>
         <td><%= entidade.uf %></td>
         <td><%= link_to entidade.projetos.size, entidade_projetos_path(entidade) %></td>
         <td><%= link_to entidade.fotos.size, entidade_fotos_path(entidade) %></td>
@@ -31,20 +29,17 @@
         <td><%= link_to entidade.videos.size, entidade_videos_path(entidade) %></td>
         <td><%= link_to entidade.textos.size, entidade_textos_path(entidade) %></td>
         <td><%= link_to entidade.cursos.size, entidade_cursos_path(entidade) %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_entidade_path(entidade), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      entidade_path(entidade),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
+        <% if user_signed_in? %>
+           <% if (current_user.email == entidade.email || current_user.admin?) %>
+             <td>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_path(entidade), :class => 'btn btn-default btn-xs' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_path(entidade), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger' %>
+            </td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_entidade_path,
-            :class => 'btn btn-primary' %>
+<%= link_to t('.new', :default => t("helpers.links.new")), new_entidade_path, :class => 'btn btn-primary' if user_signed_in? %>

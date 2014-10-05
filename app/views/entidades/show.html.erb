@@ -26,31 +26,31 @@
   <dt><strong>Possui Telecentro?:</strong></dt>
   <dd><%= I18n.t(@entidade.telecentro.to_s) %></dd>
   <dt><strong>É GESAC?:</strong></dt>
-  <dd><%= I18n.t(@entidade.gesac) %></dd>
+  <dd><%= I18n.t(@entidade.gesac.to_s) %></dd>
   <dt><strong>É Ponto de Cultura?:</strong></dt>
-  <dd><%= I18n.t(@entidade.ponto_cultura) %></dd>
+  <dd><%= I18n.t(@entidade.ponto_cultura.to_s) %></dd>
   <dt><strong>Possui Estudos Culturais?:</strong></dt>
-  <dd><%= I18n.t(@entidade.estudo_cultural) %></dd>
+  <dd><%= I18n.t(@entidade.estudo_cultural.to_s) %></dd>
   <dt><strong>É Quilombo?:</strong></dt>
-  <dd><%= I18n.t(@entidade.quilombo) %></dd>
+  <dd><%= I18n.t(@entidade.quilombo.to_s) %></dd>
   <dt><strong>É Quilombo Urbano?:</strong></dt>
-  <dd><%= I18n.t(@entidade.quilombo_urbano) %></dd>
+  <dd><%= I18n.t(@entidade.quilombo_urbano.to_s) %></dd>
   <dt><strong>Possui Capoeira?:</strong></dt>
-  <dd><%= I18n.t(@entidade.capoeira) %></dd>
+  <dd><%= I18n.t(@entidade.capoeira.to_s) %></dd>
   <dt><strong>É Terreiro?:</strong></dt>
-  <dd><%= I18n.t(@entidade.terreiro) %></dd>
+  <dd><%= I18n.t(@entidade.terreiro.to_s) %></dd>
   <dt><strong>Possui Núcleo de Formação?:</strong></dt>
-  <dd><%= I18n.t(@entidade.nucleo_formacao) %></dd>
+  <dd><%= I18n.t(@entidade.nucleo_formacao.to_s) %></dd>
   <dt><strong>Possui Grupo de Mestres?:</strong></dt>
-  <dd><%= I18n.t(@entidade.grupo_mestre) %></dd>
+  <dd><%= I18n.t(@entidade.grupo_mestre.to_s) %></dd>
   <dt><strong>Possui Rádio?:</strong></dt>
-  <dd><%= I18n.t(@entidade.radio) %></dd>
+  <dd><%= I18n.t(@entidade.radio.to_s) %></dd>
   <dt><strong>Possui Estúdo?:</strong></dt>
-  <dd><%= I18n.t(@entidade.estudio) %></dd>
+  <dd><%= I18n.t(@entidade.estudio.to_s) %></dd>
   <dt><strong>Possui Roupas e Acessórios?:</strong></dt>
-  <dd><%= I18n.t(@entidade.roupa_acessorio) %></dd>
+  <dd><%= I18n.t(@entidade.roupa_acessorio.to_s) %></dd>
   <dt><strong>Realiza Eventos?:</strong></dt>
-  <dd><%= I18n.t(@entidade.evento) %></dd>
+  <dd><%= I18n.t(@entidade.evento.to_s) %></dd>
   <dt><strong>Descrição:</strong></dt>
   <dd><%= @entidade.descricao %></dd>
 
@@ -65,10 +65,9 @@
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               entidades_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_entidade_path(@entidade), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              entidade_path(@entidade),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+<% if user_signed_in? %>
+  <% if (current_user.email == entidade.email || current_user.admin?) %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_path(@entidade), :class => 'btn btn-default' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_path(@entidade), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' %>
+  <% end %>
+<% end %>
