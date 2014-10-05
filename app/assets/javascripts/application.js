@@ -16,7 +16,11 @@
 //= require leaflet
 //= require_tree .
 
+markers = [];
+
 $(document).ready(function() {
+
+  $('#entidade').val('');
 
   $('#uf').on('change', function() {
     if ($('#uf').val()) {
@@ -34,5 +38,29 @@ $(document).ready(function() {
     }
   });
 
-});
+  $('#entidade').on('change', function() {
+    tipo = $(this).val();
+    jQuery.each(markers, function() {
+      map.removeLayer(this);
+    });
 
+    if (tipo != '')
+    {
+      $.ajax({
+        type : 'get',
+        url : '/entidades/lista/' + tipo + '.json',
+        contentType : 'application/json; charset=utf-8',
+        dataType : 'json',
+        success : function(responseData) {
+          jQuery.each(responseData, function() {
+            idMarker = this["id"];
+            marker = L.marker([this["latitude"], this["longitude"]]).addTo(map);
+            marker.bindPopup('<center><h3><a href="/entidades/' + this["slug"] + '" > ' + this["entidade"] + ' </a></h3></center>');
+            markers[idMarker] = marker;
+          });
+        }
+      });
+    }
+  });
+    
+});

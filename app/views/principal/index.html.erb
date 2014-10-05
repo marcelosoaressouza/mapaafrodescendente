@@ -1,3 +1,7 @@
+<%= select(nil, :id, { "Telecentro" => "telecentro", "Terreiro" => "terreiro" , "GESAC" => "gesac", "Ponto de Cultura" => "ponto_cultura", "Estudos Culturais" => "estudo_cultural", "Quilombo" => "quilombo", "Quilombo Urbano" => "quilombo_urbano", "Capoeira" => "capoeira", "Terreiro" => "terreiro", "Núcleo de Formação" => "nucleo_formacao", "Grupo de Mestres" => "grupo_mestre", "Rádio" => "radio", "Estúdio" => "estudio", "Roupas e Acessórios" => "roupa_acessorio", "Eventos" => "evento" }, { :include_blank => "Selecione" }, { :id => 'entidade' } )  %>
+
+<br/><br/>
+
 <style> #map { width: 100%; height: 520px;} </style>
 
 <%= map(:center  => {:latlng => [-15.77835833463309, -47.88219451904297], :zoom => 4 }, :markers => @markers ) %>

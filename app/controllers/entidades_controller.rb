@@ -2,6 +2,16 @@ class EntidadesController < ApplicationController
   before_action :set_entidade, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
+  # GET /entidades/lista/tipo
+  # GET /entidades/lista/tipo.json
+  def lista
+    @entidades = Entidade.select("entidade, slug, latitude, longitude, telecentro, id").where("#{params[:tipo]} = true")
+
+    respond_to do |format|
+      format.json { render json: @entidades }
+    end
+  end
+
   # GET /entidades
   # GET /entidades.json
   def index

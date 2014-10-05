@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   root 'principal#index'
   get '/ufs/:sigla/municipios', :to => 'municipios#index'
+  get '/entidades/lista/:tipo', :to => 'entidades#lista'
 end
