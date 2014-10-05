@@ -31,12 +31,13 @@
     <%= error_span(@foto[:imagem]) %>
   </div>
 
-<%= f.hidden_field :entidade_id, :value => @dados.id %>
+  <%= f.hidden_field :entidade_id, :value => @dados.id %>
 
-<br/>
-
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-            entidade_fotos_path, :class => 'btn btn-default' %>
-
+  <% if user_signed_in? %>
+    <br/>
+    <% if (current_user.email == @dados.email || current_user.admin?) ||  params[:action] == 'new' %>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")), entidade_fotos_path, :class => 'btn btn-default' %>
+    <% end %>
+  <% end %>
 <% end %>

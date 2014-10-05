@@ -1,5 +1,6 @@
 class FotosController < ApplicationController
   before_action :set_foto, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
 
   # GET /fotos
   # GET /fotos.json
@@ -18,11 +19,13 @@ class FotosController < ApplicationController
   def new
     @foto = Foto.new
     @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_fotos_url)
   end
 
   # GET /fotos/1/edit
   def edit
-     @dados = Entidade.friendly.find(params[:entidade_id])
+    @dados = Entidade.friendly.find(params[:entidade_id])
+    return false if !owner_verify(@dados, entidade_fotos_url)
  end
 
   # POST /fotos

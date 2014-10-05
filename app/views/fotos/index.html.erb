@@ -9,14 +9,16 @@
       <th>#</th>
       <th>Título</th>
       <th>Imagem</th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% if user_signed_in? %>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
     <% @fotos.each do |foto| %>
       <tr>
-        <td><%= link_to foto.id, entidade_fotos_path(@dados) %></td>
-        <td><%= foto.titulo %></td>
+        <td><%= link_to foto.id, entidade_foto_path(@dados, foto) %></td>
+        <td><%= link_to foto.titulo, entidade_foto_path(@dados, foto) %></td>
         <td><%= link_to (image_tag foto.imagem.url(:thumb), :alt => foto.titulo, :title => foto.titulo), foto.imagem.url %></td>
         <% if user_signed_in? %>
            <% if (current_user.email == foto.entidade.email || current_user.admin?) %>

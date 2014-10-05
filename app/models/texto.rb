@@ -5,4 +5,7 @@ class Texto < ActiveRecord::Base
                     :path => ":rails_root/public/textos/:id/:basename_:style.:extension"
 
   validates_attachment_content_type :arquivo, :content_type => /.*/  
+
+  validates :titulo, :presence => true
+
 end

@@ -5,4 +5,7 @@ class Curso < ActiveRecord::Base
                     :path => ":rails_root/public/cursos/:id/:basename_:style.:extension"
 
   validates_attachment_content_type :arquivo, :content_type => /.*/  
+
+  validates :titulo, :presence => true
+
 end

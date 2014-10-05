@@ -12,12 +12,11 @@
   </dd>
 </dl>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              entidade_fotos_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_entidade_foto_path(@dados, @foto), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              entidade_foto_path(@dados, @foto),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) },
-              :class => 'btn btn-danger' %>
+<%= link_to t('.back', :default => t("helpers.links.back")), entidade_fotos_path, :class => 'btn btn-default'  %>
+
+<% if user_signed_in? %>
+  <% if (current_user.email == @foto.entidade.email || current_user.admin?) %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_entidade_foto_path(@dados, @foto), :class => 'btn btn-default' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")), entidade_foto_path(@dados, @foto), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você tem certeza?')) }, :class => 'btn btn-danger' %>
+  <% end %>
+<% end %>
