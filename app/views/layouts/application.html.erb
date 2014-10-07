@@ -51,6 +51,9 @@
             <li><%= link_to "Listar Todas", "/entidades"  %></li>
             <% if user_signed_in? %>
               <li> <%= link_to "Sair" + " (" + current_user.email + ")", destroy_user_session_path, :method => :delete %> </li>
+              <% if (current_user.admin?) %>
+                <li> <%= link_to "Gerenciar Usuários", users_path %> </li>
+              <% end %>
             <% else %>
               <li> <%= link_to "Logar", new_user_session_path, :id => 'popover-login', 'data-content' => 'Logar no Mapa da Cultura', 'data-placement' => 'bottom' %> </li>
             <% end %>

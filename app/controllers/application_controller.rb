@@ -14,4 +14,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def admin_user
+    if user_signed_in?
+      if ! current_user.admin?
+        redirect_to "/", :alert => 'Restrito apenas para Administradores.'
+        return false
+      else
+        return true
+      end
+    end
+  end
+
 end

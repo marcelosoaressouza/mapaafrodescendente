@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users 
+      as :user do
+      get 'users/alterar' => 'devise/registrations#edit', :as => 'edit_user_registration'
+      put 'users' => 'devise/registrations#update', :as => 'user_registration'   
+    end
+
   get 'municipios/index'
+
+  resources :users
 
   resources :entidades do
     resources :fotos,    :controller => "fotos"
@@ -10,7 +18,7 @@ Rails.application.routes.draw do
     resources :videos,   :controller => "videos"
   end
 
-  devise_for :users
+  # devise_for :users
 
   get 'principal/index'
 
