@@ -49,7 +49,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label "UF", :class => 'control-label' %>
+    <strong>UF</strong>
     <div class="controls">
         <%= f.collection_select :uf, Uf.all, :sigla, :sigla, {:prompt => true}, :id => 'uf' %>
     </div>
@@ -57,7 +57,7 @@
   </div>
 
 <div class="control-group" id='select-municipio'>
-  <%= f.label "Município", 'municipio', :class => 'control-label' %>
+  <%= f.label "Município", :class => 'control-label' %>
   <div class="controls">
     <% municipios = Municipio.from("municipios, ufs as estado").where("estado.sigla ILIKE ?", @entidade.uf).where("estado.id = municipios.estado_id") %>
     <%= f.collection_select :municipio, municipios, :nome, :nome, { :selected => @entidade.municipio.to_s }, :id => 'municipio' %>
