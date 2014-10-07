@@ -73,8 +73,6 @@ ActiveRecord::Schema.define(version: 20141005153447) do
     t.datetime "updated_at"
   end
 
-  add_index "entidades", ["email"], name: "index_entidades_on_email", unique: true, using: :btree
-  add_index "entidades", ["entidade"], name: "index_entidades_on_entidade", unique: true, using: :btree
   add_index "entidades", ["slug"], name: "index_entidades_on_slug", unique: true, using: :btree
 
   create_table "fotos", force: true do |t|

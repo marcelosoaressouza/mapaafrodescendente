@@ -6,7 +6,7 @@ class Entidade < ActiveRecord::Base
   after_validation :geocode 
 
   def localizacao
-     "#{self.municipio}, #{self.uf}, Brasil"
+     "#{self.endereco}, #{self.municipio}, #{self.uf}, Brasil"
   end
 
   has_many :fotos,    :dependent => :destroy

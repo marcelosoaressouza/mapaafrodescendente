@@ -1,6 +1,6 @@
 test:
   adapter: postgresql
-  database: mapaafrodescendente
+  database: mapaafrodescendente_test
   host: localhost
   username: mapaafrodescendente
   password: mapaafrodescendente
@@ -9,7 +9,7 @@ test:
 
 development:
   adapter: postgresql
-  database: mapaafrodescendente
+  database: mapaafrodescendente_development
   host: localhost
   username: mapaafrodescendente
   password: mapaafrodescendente
@@ -18,7 +18,7 @@ development:
 
 production:
   adapter: postgresql
-  database: mapaafrodescendente
+  database: mapaafrodescendente_production
   host: localhost
   username: mapaafrodescendente
   password: mapaafrodescendente

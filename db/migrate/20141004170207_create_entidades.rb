@@ -30,8 +30,6 @@ class CreateEntidades < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :entidades, :entidade, unique: true
     add_index :entidades, :slug, unique: true
-    add_index :entidades, :email, unique: true
   end
 end
