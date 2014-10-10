@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Mapa de Entidades Afrodescendentes" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Mapeamento de Iniciativas de Inclusão Digital em Comunidades Tradicionais de Matriz Africana" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -45,7 +45,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Mapa de Entidades Afrodescendentes</a>
+        <a class="navbar-brand" href="/">Mapeamento de Iniciativas de Inclusão Digital em Comunidades Tradicionais de Matriz Africana</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "Listar Todas", "/entidades"  %></li>
@@ -55,7 +55,7 @@
                 <li> <%= link_to "Gerenciar Usuários", users_path %> </li>
               <% end %>
             <% else %>
-              <li> <%= link_to "Logar", new_user_session_path, :id => 'popover-login', 'data-content' => 'Logar no Mapa da Cultura', 'data-placement' => 'bottom' %> </li>
+              <li> <%= link_to "Logar", new_user_session_path, :id => 'popover-login', 'data-content' => 'Logar', 'data-placement' => 'bottom' %> </li>
             <% end %>
           </ul>
         </div>

@@ -31,6 +31,10 @@ body {
 }
 
 .navbar-default .navbar-brand {
+  text-align: center;
+  margin-top: -10px;
+  vertical-align: top;
+  max-width: 800px;
   font-weight: 900;
   color: #FFF;
 }
