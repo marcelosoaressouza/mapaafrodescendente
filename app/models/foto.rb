@@ -11,4 +11,5 @@ class Foto < ActiveRecord::Base
 
   validates :titulo, :presence => true
 
+  acts_as_taggable_on :tags
 end

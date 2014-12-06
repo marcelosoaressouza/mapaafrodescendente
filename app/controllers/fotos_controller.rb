@@ -69,6 +69,14 @@ class FotosController < ApplicationController
     end
   end
 
+  def tagged
+    if params[:tag].present?
+      @fotos = Foto.tagged_with(params[:tag])
+    else
+      @fotos = Foto.all
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_foto
@@ -77,6 +85,6 @@ class FotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def foto_params
-      params.require(:foto).permit(:titulo, :entidade_id, :imagem)
+      params.require(:foto).permit(:titulo, :entidade_id, :imagem, :tag_list)
     end
 end

@@ -1,12 +1,18 @@
 <%- model_class = Entidade -%>
 <div class="page-header">
   <h3><%=@entidade.entidade %></h3>
-  <%= link_to "Projetos (#{@entidade.projetos.size.to_s})", entidade_projetos_path(@entidade) %> | 
-  <%= link_to "Fotos  (#{@entidade.fotos.size.to_s})", entidade_fotos_path(@entidade) %> | 
-  <%= link_to "Áudios (#{@entidade.audios.size.to_s})", entidade_audios_path(@entidade) %> | 
-  <%= link_to "Videos (#{@entidade.videos.size.to_s})", entidade_videos_path(@entidade) %> | 
-  <%= link_to "Textos (#{@entidade.textos.size.to_s})", entidade_textos_path(@entidade) %> | 
+  <%= link_to "Projetos (#{@entidade.projetos.size.to_s})", entidade_projetos_path(@entidade) %> 
+  <% if user_signed_in? %> <% if (current_user.email == @entidade.email || current_user.admin?) %> <strong style="font-size:9px;"> (<%= link_to "Enviar Novo", new_entidade_projeto_path(@entidade), :style => 'color: #FF2D2D;' %>) </strong> <% end %> <% end %> | 
+  <%= link_to "Fotos  (#{@entidade.fotos.size.to_s})", entidade_fotos_path(@entidade) %>
+  <% if user_signed_in? %> <% if (current_user.email == @entidade.email || current_user.admin?) %> <strong style="font-size:9px"> (<%= link_to "Enviar Novo", new_entidade_foto_path(@entidade), :style => 'color: #FF2D2D;' %>) </strong> <% end %> <% end %> | 
+  <%= link_to "Áudios (#{@entidade.audios.size.to_s})", entidade_audios_path(@entidade) %>
+  <% if user_signed_in? %> <% if (current_user.email == @entidade.email || current_user.admin?) %> <strong style="font-size:9px"> (<%= link_to "Enviar Novo", new_entidade_audio_path(@entidade), :style => 'color: #FF2D2D;' %>) </strong> <% end %> <% end %> | 
+  <%= link_to "Videos (#{@entidade.videos.size.to_s})", entidade_videos_path(@entidade) %>
+  <% if user_signed_in? %> <% if (current_user.email == @entidade.email || current_user.admin?) %> <strong style="font-size:9px"> (<%= link_to "Enviar Novo", new_entidade_video_path(@entidade), :style => 'color: #FF2D2D;' %>) </strong> <% end %> <% end %> | 
+  <%= link_to "Textos (#{@entidade.textos.size.to_s})", entidade_textos_path(@entidade) %>
+  <% if user_signed_in? %> <% if (current_user.email == @entidade.email || current_user.admin?) %> <strong style="font-size:9px"> (<%= link_to "Enviar Novo", new_entidade_texto_path(@entidade), :style => 'color: #FF2D2D;' %>) </strong> <% end %> <% end %> | 
   <%= link_to "Cursos (#{@entidade.cursos.size.to_s})", entidade_cursos_path(@entidade) %> 
+  <% if user_signed_in? %> <% if (current_user.email == @entidade.email || current_user.admin?) %> <strong style="font-size:9px"> (<%= link_to "Enviar Novo", new_entidade_curso_path(@entidade), :style => 'color: #FF2D2D;' %>) </strong> <% end %> <% end %>
 </div>
 
 <dl class="dl-horizontal">
@@ -18,10 +24,16 @@
   <dd><%= @entidade.municipio %></dd>
   <dt><strong>UF:</strong></dt>
   <dd><%= @entidade.uf %></dd>
-  <dt><strong>Endereço:</strong></dt>
-  <dd><%= @entidade.endereco %></dd>
-  <dt><strong>Telefone:</strong></dt>
-  <dd><%= @entidade.telefone %></dd>
+
+  <% if user_signed_in? %>
+    <% if (current_user.email == @entidade.email || current_user.admin?) %>
+      <dt><strong>Endereço:</strong></dt>
+      <dd><%= @entidade.endereco %></dd>
+      <dt><strong>Telefone:</strong></dt>
+      <dd><%= @entidade.telefone %></dd>
+    <% end %>
+  <% end %>
+
   <dt><strong>Descritor GESAC:</strong></dt>
   <dd><%= @entidade.descritor %></dd>
   <dt><strong>Possui Telecentro?:</strong></dt>

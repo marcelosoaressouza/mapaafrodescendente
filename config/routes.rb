@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  match 'tagged' => 'principal#tagged', :as => 'tagged', via: [:get, :post]
+
   devise_for :users 
       as :user do
       get 'users/alterar' => 'devise/registrations#edit', :as => 'edit_user_registration'

@@ -77,6 +77,6 @@ class TextosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def texto_params
-      params.require(:texto).permit(:titulo, :entidade_id, :arquivo)
+      params.require(:texto).permit(:titulo, :entidade_id, :arquivo, :tag_list)
     end
 end

@@ -10,6 +10,7 @@
       <th>#</th>
       <th>Título</th>
       <th>Arquivo</th>
+      <th>Tags</th>
       <% if user_signed_in? %>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
       <% end %>
@@ -21,6 +22,7 @@
         <td><%= link_to video.id, entidade_video_path(@dados, video) %></td>
         <td><%= link_to video.titulo, entidade_video_path(@dados, video) %></td>
         <td><%= link_to "Download", video.arquivo.url %></td>
+        <td><% video.tags.each do |tag| %><%= " " + tag.name %><% end %></td>
         <% if user_signed_in? %>
            <% if (current_user.email == video.entidade.email || current_user.admin?) %>
              <td>

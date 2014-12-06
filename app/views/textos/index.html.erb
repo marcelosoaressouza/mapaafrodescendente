@@ -10,6 +10,7 @@
       <th>#</th>
       <th>Título</th>
       <th>Arquivo</th>
+      <th>Tags</th>
       <% if user_signed_in? %>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
       <% end %>
@@ -21,6 +22,7 @@
         <td><%= link_to texto.id, entidade_texto_path(@dados, texto) %></td>
         <td><%= link_to texto.titulo, entidade_texto_path(@dados, texto) %></td>
         <td><%= link_to "Download", texto.arquivo.url %></td>
+        <td><% texto.tags.each do |tag| %><%= " " + tag.name %><% end %></td>
         <% if user_signed_in? %>
            <% if (current_user.email == texto.entidade.email || current_user.admin?) %>
              <td>

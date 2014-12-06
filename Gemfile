@@ -32,3 +32,6 @@ gem 'leaflet-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'geocoder'
+
+# tags
+gem 'acts-as-taggable-on'

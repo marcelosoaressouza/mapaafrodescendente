@@ -1,7 +1,6 @@
 <%- model_class = Foto -%>
 <div class="page-header">
   <h3><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h3>
-  <%= link_to "Voltar", entidade_path(@dados) %>
 </div>
 <% if @fotos.size > 0%>
 <table class="table table-striped">
@@ -22,8 +21,7 @@
         <td><%= link_to foto.id, entidade_foto_path(@dados, foto) %></td>
         <td><%= link_to foto.titulo, entidade_foto_path(@dados, foto) %></td>
         <td><%= link_to (image_tag foto.imagem.url(:thumb), :alt => foto.titulo, :title => foto.titulo), foto.imagem.url %></td>
-        <td><% foto.tags.each do |tag| %><%= " " + tag.name %><% end %></td>
-        <!-- <td><% foto.tags.each do |tag| %><%= link_to tag.name, tagged_url(:tag => tag.name) %><% end %></td> -->
+        <td><% foto.tags.each do |tag| %><%= link_to tag.name, tagged_url(:tag => tag.name) %><% end %></td>
 
         <% if user_signed_in? %>
            <% if (current_user.email == foto.entidade.email || current_user.admin?) %>
